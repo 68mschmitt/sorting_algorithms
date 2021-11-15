@@ -9,10 +9,17 @@ slider.oninput = function() {
 
 outerArray = [];
 let waitTime = 1000;
+let comparisons = 0;
 shuffle();
 function shuffle() {
+    comparisons = 0;
+    setComparisons();
     outerArray = get_random_array(slider.value);
     drawBars();
+}
+
+function setComparisons() {
+    document.getElementById('comparisonsDisplay').innerHTML = comparisons;
 }
 
 function drawBars() {
@@ -57,6 +64,7 @@ function focus_bars(array) {
         let targetBar = document.querySelector('#ind' + array[i].ind);
         targetBar.style.background = 'orange';
     }
+    setComparisons();
 }
 
 function reset_grid() {
@@ -67,8 +75,12 @@ function start_sort() {
     sort_array();
 }
 
-function sort_array() {
-    merge_sort(outerArray);
+const sort_array = async () => {
+    document.getElementById('sortButton').disabled = true;
+    document.getElementById('randomSample').disabled = true;
+    await merge_sort(outerArray);
+    document.getElementById('sortButton').disabled = false;
+    document.getElementById('randomSample').disabled = false;
 }
 
 function update_display(value) {
@@ -113,6 +125,7 @@ function merge(left, right) {
             j++;
         }
         k++;
+        comparisons++;
     }
 
     while (i < left.length) {
