@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms</title>
+</head>
+<body>
+    <div id="container" style="border: solid red 1px; margin: auto; margin-top: 10%; overflow-x: scroll;">
+        <h1>Merge sort</h1>
+        <div class="slidecontainer">
+            <input type="range" min="2" max="3000" value="100" class="slider" id="randomSample" style="width: 50%;">
+            <p>Sample Size: <span id="sampleSizeDisplay"></span></p>
+          </div>
+        <p style="font-size:55px;" id="mergeArray"><div style="width: 100%;" id="bars"></div></p>
+        
+        <button id="sortButton" onclick="start_sort()">Sort</button>
+    </div>
+    <script src="script.js"></script>
+    <script src="slider.js"></script>
+</body>
+</html>
