@@ -3,10 +3,7 @@ var output = document.getElementById("sampleSizeDisplay");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-}
-
-function sliderChange() {
-    output.innerHTML = this.value;
+    output.innerHTML = slider.value;
     document.getElementById('sortButton').disabled = false;
     shuffle();
 }
