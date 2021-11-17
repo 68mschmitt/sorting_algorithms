@@ -3,29 +3,45 @@ var output = document.getElementById("sampleSizeDisplay");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
-  shuffle();
 }
 
-outerArray = [];
+function sliderChange() {
+    output.innerHTML = this.value;
+    document.getElementById('sortButton').disabled = false;
+    shuffle();
+}
+
+function dropDownChange() {
+    document.getElementById('sortButton').disabled = false;
+    shuffle();
+}
+
+array = [];
 let waitTime = 1000;
 let comparisons = 0;
 shuffle();
+
 function shuffle() {
     comparisons = 0;
     setComparisons();
-    outerArray = get_random_array(slider.value);
-    drawBars();
+    array = get_random_array(slider.value);
+    initializeBars();
 }
 
 function setComparisons() {
     document.getElementById('comparisonsDisplay').innerHTML = comparisons;
 }
 
-function drawBars() {
+function initializeBars() {
     const maxWidth = document.getElementsByTagName('div')[0].offsetWidth - 50;
-    waitTime /= outerArray.length;
-    order_bars(outerArray, 'red', (maxWidth / outerArray.length));
+    waitTime /= array.length;
+    document.getElementById('bars').innerHTML = '';
+    let bars = [];
+    let container = document.getElementById('bars');
+    for (let i = 0; i < array.length; i++) {
+        bars[i] = '<div id="ind' + array[i].ind + '" style="display: inline-block; width: ' + (maxWidth / array.length) + 'px; height: ' + (array[i].val) + 'px; background-color: red;"></div>';
+    }
+    container.innerHTML = bars.join('');
 }
 
 function get_random_array(size) {
@@ -37,29 +53,7 @@ function get_random_array(size) {
     return arr;
 }
 
-function addElements(sampleSize) {
-    let arr = outerArray;
-    if (sampleSize <= outerArray.length) {
-        shuffle(sampleSize);
-    } else {
-        for (var i = outerArray.length; i < sampleSize; i++) {
-            const val = { val: Math.round(Math.random() * 250), ind: i};
-            if (!(val in arr)) arr.push(val);
-        }
-    }
-}
-
-function order_bars(array, color, barWidth) {
-    document.getElementById('bars').innerHTML = '';
-    let bars = [];
-    let container = document.getElementById('bars');
-    for (let i = 0; i < array.length; i++) {
-        bars[i] = '<div id="ind' + array[i].ind + '" style="display: inline-block; width: ' + barWidth + 'px; height: ' + (array[i].val) + 'px; background-color: ' + color + ';"></div>';
-    }
-    container.innerHTML = bars.join('');
-}
-
-function focus_bars(array) {
+function focusBars(array) {
     for (let i = 0; i < array.length; i++) {
         let targetBar = document.querySelector('#ind' + array[i].ind);
         targetBar.style.background = 'orange';
@@ -67,27 +61,7 @@ function focus_bars(array) {
     setComparisons();
 }
 
-function reset_grid() {
-    document.querySelector('#bars').innerHTML = '';
-}
-
-function start_sort() {
-    sort_array();
-}
-
-const sort_array = async () => {
-    document.getElementById('sortButton').disabled = true;
-    document.getElementById('randomSample').disabled = true;
-    await merge_sort(outerArray);
-    document.getElementById('sortButton').disabled = false;
-    document.getElementById('randomSample').disabled = false;
-}
-
-function update_display(value) {
-    document.getElementById('mergeArray').innerText = value;
-}
-
-function insert_bars(array) {
+function swapBars(array) {
     for (let i = 0; i < array.length; i++) {
         let targetBar = document.querySelector('#ind' + array[i].ind);
         targetBar.style.background = 'green';
@@ -95,25 +69,45 @@ function insert_bars(array) {
     }
 }
 
-const merge_sort = async (array) => {
+function disableControls() {
+    document.getElementById('sortButton').disabled = true;
+    document.getElementById('randomSample').disabled = true;
+    document.getElementById('sortingAlgorithmsDropDown').disabled = true;
+}
+
+function chooseSort() {
+    const dropDown = document.getElementById('sortingAlgorithmsDropDown');
+    sort(dropDown.value);
+}
+
+const sort = async (option) => {
+    disableControls();
+    switch (option) {
+        case 'mergeSort':
+            await mergeSort(array);
+            break;
+        default:
+            console.log('Another sorting algorithm');
+    }
+    document.getElementById('randomSample').disabled = false;
+    document.getElementById('sortingAlgorithmsDropDown').disabled = false;
+}
+
+const mergeSort = async (array) => {
     if (array.length < 2) {
         return array;
     }
     let mid = array.length >> 1;
-    let left = await merge_sort(array.slice(0, mid));
-    let right = await merge_sort(array.slice(mid, array.length));
+    let left = await mergeSort(array.slice(0, mid));
+    let right = await mergeSort(array.slice(mid, array.length));
     await timeout(waitTime);
-    let result = await merge(left, right);
+    let result = await mergeTwoArrays(left, right);
     await timeout(waitTime);
-    insert_bars(result);
+    swapBars(result);
     return result;
 }
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function merge(left, right) {
-    focus_bars([...left, ...right]);
+function mergeTwoArrays(left, right) {
+    focusBars([...left, ...right]);
     let array = [];
     let i = 0, j = 0, k = left[0].ind;
     while (i < left.length && j < right.length) {
@@ -139,4 +133,8 @@ function merge(left, right) {
         k++;
     }
     return array;
+}
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
