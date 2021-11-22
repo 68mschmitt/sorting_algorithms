@@ -64,9 +64,11 @@ const sort = async (option) => {
     disableControls();
     switch (option) {
         case 'mergeSort':
+            waitTime = 50;
             await mergeSort(array);
             break;
         case 'selectionSort':
+            waitTime = 0;
             await selectionSort(array);
             break;
         default:
@@ -80,12 +82,8 @@ const sort = async (option) => {
 const showGreenProgression = async () => {
     for (let i = 0; i < array.length; i++) {
         let bar = document.querySelector('#ind' + array[i].ind);
-        bar.style.background = 'white';
-    }
-    for (let i = 0; i < array.length; i++) {
-        let bar = document.querySelector('#ind' + array[i].ind);
         bar.style.background = 'red';
-        await timeout(0);
+        await timeout(10);
         bar.style.background = 'green';
     }
 }
