@@ -4,7 +4,7 @@ const selectionSort = async (arr) => {
         let min_i = i;
         for (let j = i + 1; j < size; j++) {
             focusSelectionBars([arr[j], arr[min_i]], 'orange');
-            await timeout(waitTime);
+            await timeout(0);
             focusSelectionBars([arr[j], arr[min_i]], 'red');
             if (arr[j].val < arr[min_i].val) min_i = j;
             comparisons++;
