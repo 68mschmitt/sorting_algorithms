@@ -74,6 +74,20 @@ const sort = async (option) => {
     }
     document.getElementById('randomSample').disabled = false;
     document.getElementById('sortingAlgorithmsDropDown').disabled = false;
+    await showGreenProgression();
+}
+
+const showGreenProgression = async () => {
+    for (let i = 0; i < array.length; i++) {
+        let bar = document.querySelector('#ind' + array[i].ind);
+        bar.style.background = 'white';
+    }
+    for (let i = 0; i < array.length; i++) {
+        let bar = document.querySelector('#ind' + array[i].ind);
+        bar.style.background = 'red';
+        await timeout(0);
+        bar.style.background = 'green';
+    }
 }
 
 function timeout(ms) {

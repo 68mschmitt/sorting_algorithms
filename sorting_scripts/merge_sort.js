@@ -51,7 +51,7 @@ function focusBars(array) {
 function swapBars(array) {
     for (let i = 0; i < array.length; i++) {
         let targetBar = document.querySelector('#ind' + array[i].ind);
-        targetBar.style.background = 'green';
+        targetBar.style.background = 'white';
         targetBar.style.height = array[i].val + 'px';
     }
 }

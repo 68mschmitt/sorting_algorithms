@@ -15,7 +15,7 @@ const selectionSort = async (arr) => {
             arr[min_i].val = tmp;
         }
         reDrawBars(arr[i], arr[min_i]);
-        greenifyBars(i);
+        drawDoneBars(i);
     }
     return arr;
 }
@@ -36,9 +36,9 @@ function reDrawBars(doneBar, swappedBar) {
     targetSwappedBar.style.height = swappedBar.val + 'px';
 }
 
-function greenifyBars(currentIndex) {
+function drawDoneBars(currentIndex) {
     for (let i = 0; i <= currentIndex; i++) {
         let bar = document.querySelector('#ind' + array[i].ind);
-        bar.style.background = 'green';
+        bar.style.background = 'white';
     }
 }
