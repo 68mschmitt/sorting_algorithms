@@ -10,6 +10,7 @@
     <div id="container" style="border: solid red 1px; margin: auto; margin-top: 10%;">
         <select onchange="dropDownChange()" name="sortingAlgorithmsDropDown" id="sortingAlgorithmsDropDown">
             <option value="mergeSort">Merge Sort</option>
+            <option value="selectionSort">Selection Sort</option>
         </select>
         <div class="slidecontainer">
             <input type="range" min="2" max="3000" value="100" class="slider" id="randomSample" style="width: 50%;">
@@ -20,7 +21,8 @@
         
         <button id="sortButton" onclick="chooseSort()">Sort</button>
     </div>
-    <script src="script.js"></script>
-    <script src="slider.js"></script>
+    <script type="text/javascript" src="sorting_scripts/visual_functions.js"></script>
+    <script type="text/javascript" src="sorting_scripts/merge_sort.js"></script>
+    <script type="text/javascript" src="sorting_scripts/selection_sort.js"></script>
 </body>
 </html>
