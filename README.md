@@ -1,4 +1,5 @@
 This project is to show visually how differenting algorithms operate.
+LINK: https://68mschmitt.github.io/sorting_algorithms/
 
 Currenting sorting algorithms include:
  - Merge Sort
