@@ -7,13 +7,14 @@ const selectionSort = async (arr) => {
             await timeout(waitTime);
             focusSelectionBars([arr[j], arr[min_i]], 'red');
             if (arr[j].val < arr[min_i].val) min_i = j;
+            comparisons++;
         }
         if (min_i !== i) {
             const tmp = arr[i].val;
             arr[i].val = arr[min_i].val;
             arr[min_i].val = tmp;
         }
-        swapSelectionBars(arr[i], arr[min_i]);
+        reDrawBars(arr[i], arr[min_i]);
         greenifyBars(i);
     }
     return arr;
@@ -27,7 +28,7 @@ function focusSelectionBars(array, color) {
     setComparisons();
 }
 
-function swapSelectionBars(doneBar, swappedBar) {
+function reDrawBars(doneBar, swappedBar) {
     let targetDoneBar = document.querySelector('#ind' + doneBar.ind);
     targetDoneBar.style.height = doneBar.val + 'px';
 
