@@ -7,9 +7,9 @@ Currenting sorting algorithms include:
  - Bubble
  - Recursive Bubble
  - Insertion
+ - Recursive insertion
  
  Sorting algorithms in the works
- - Recursive insertion
  - Quick
  - Heap
  - Counting

@@ -1,5 +1,4 @@
 const insertionSort = async (arr) => {
-    console.log(arr);
     let i, j, key;
     for (i = 1; i < arr.length; i++) {
         key = arr[i].val;

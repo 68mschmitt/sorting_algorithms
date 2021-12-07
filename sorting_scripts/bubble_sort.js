@@ -1,5 +1,4 @@
 const bubbleSort = async (arr) => {
-    console.log(arr);
     for(let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length; j++) {
             focusSelectionBars([arr[i], arr[j]], 'orange');
@@ -15,6 +14,5 @@ const bubbleSort = async (arr) => {
             drawDoneBars(i);
         }
     }
-    console.log(arr);
     return arr;
 }
