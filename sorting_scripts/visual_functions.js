@@ -87,6 +87,10 @@ const sort = async (option) => {
             waitTime = 0;
             await recursiveInsertionSort(array, array.length);
             break;
+        case 'quickSort':
+            waitTime = 10;
+            await quickSort(array, 0, array.length - 1);
+            break;
         default:
             console.log('Another sorting algorithm');
     }
