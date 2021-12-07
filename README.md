@@ -4,9 +4,9 @@ LINK: https://68mschmitt.github.io/sorting_algorithms/
 Currenting sorting algorithms include:
  - Merge Sort
  - Selection
+ - Bubble
  
- Sorting algorithms in the works
- - Bubble  
+ Sorting algorithms in the works 
  - Recursive Bubble 
  - Insertion 
  - Recursive insertion 

@@ -35,7 +35,7 @@ function initializeBars() {
     let bars = [];
     let container = document.getElementById('bars');
     for (let i = 0; i < array.length; i++) {
-        bars[i] = '<div id="ind' + array[i].ind + '" style="display: inline-block; width: ' + (maxWidth / array.length) + 'px; height: ' + (array[i].val) + 'px; background-color: red;"></div>';
+        bars[i] = '<div id="ind' + array[i].ind + '" style="vertical-align: middle; display: inline-block; width: ' + (maxWidth / array.length) + 'px; height: ' + (array[i].val) + 'px; background-color: red;"></div>';
     }
     container.innerHTML = bars.join('');
 }
@@ -71,6 +71,10 @@ const sort = async (option) => {
             waitTime = 0;
             await selectionSort(array);
             break;
+        case 'bubbleSort':
+            waitTime = 0;
+            await bubbleSort(array);
+            break;
         default:
             console.log('Another sorting algorithm');
     }
@@ -90,4 +94,27 @@ const showGreenProgression = async () => {
 
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function focusSelectionBars(array, color) {
+    for (let i = 0; i < array.length; i++) {
+        let targetBar = document.querySelector('#ind' + array[i].ind);
+        targetBar.style.background = color;
+    }
+    setComparisons();
+}
+
+function reDrawBars(doneBar, swappedBar) {
+    let targetDoneBar = document.querySelector('#ind' + doneBar.ind);
+    targetDoneBar.style.height = doneBar.val + 'px';
+
+    let targetSwappedBar = document.querySelector('#ind' + swappedBar.ind);
+    targetSwappedBar.style.height = swappedBar.val + 'px';
+}
+
+function drawDoneBars(currentIndex) {
+    for (let i = 0; i <= currentIndex; i++) {
+        let bar = document.querySelector('#ind' + array[i].ind);
+        bar.style.background = 'white';
+    }
 }
