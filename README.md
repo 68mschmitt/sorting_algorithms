@@ -5,9 +5,9 @@ Currenting sorting algorithms include:
  - Merge Sort
  - Selection
  - Bubble
+ - Recursive Bubble
  
- Sorting algorithms in the works 
- - Recursive Bubble 
+ Sorting algorithms in the works
  - Insertion 
  - Recursive insertion 
  - Quick 

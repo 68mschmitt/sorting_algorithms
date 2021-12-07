@@ -75,6 +75,10 @@ const sort = async (option) => {
             waitTime = 0;
             await bubbleSort(array);
             break;
+        case 'recursiveBubbleSort':
+            waitTime = 0;
+            await recursiveBubbleSort(array, array.length);
+            break;
         default:
             console.log('Another sorting algorithm');
     }
