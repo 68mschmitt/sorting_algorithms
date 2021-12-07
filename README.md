@@ -6,12 +6,12 @@ Currenting sorting algorithms include:
  - Selection
  - Bubble
  - Recursive Bubble
+ - Insertion
  
  Sorting algorithms in the works
- - Insertion 
- - Recursive insertion 
- - Quick 
- - Heap 
+ - Recursive insertion
+ - Quick
+ - Heap
  - Counting
  - Radix
  - Bucket
