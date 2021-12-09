@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Algorithms</title>
 </head>
+
 <body style="background-color: grey;">
     <div id="container" style="border: solid red 1px; margin: auto; margin-top: 10%;">
         <select onchange="dropDownChange()" name="sortingAlgorithmsDropDown" id="sortingAlgorithmsDropDown">
@@ -21,9 +23,11 @@
             <input type="range" min="2" max="100" value="100" class="slider" id="randomSample" style="width: 50%;">
             <p>Sample Size: <span id="sampleSizeDisplay"></span></p>
             <p>Comparisons: <span id="comparisonsDisplay"></span></p>
-          </div>
-        <p style="font-size:55px;" id="mergeArray"><div style="width: 100%; line-height: 200px;" id="bars"></div></p>
-        
+        </div>
+        <p style="font-size:55px;" id="mergeArray">
+            <div style="width: 100%; line-height: 200px;" id="bars"></div>
+        </p>
+
         <button id="sortButton" onclick="chooseSort()">Sort</button>
     </div>
     <script type="text/javascript" src="sorting_scripts/visual_functions.js"></script>
@@ -35,4 +39,5 @@
     <script type="text/javascript" src="sorting_scripts/recursive_insertion_sort.js"></script>
     <script type="text/javascript" src="sorting_scripts/quick_sort.js"></script>
 </body>
+
 </html>

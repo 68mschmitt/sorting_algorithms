@@ -1,4 +1,4 @@
-const mergeSort = async (array) => {
+const mergeSort = async(array) => {
     if (array.length < 2) {
         return array;
     }
@@ -11,16 +11,19 @@ const mergeSort = async (array) => {
     swapBars(result);
     return result;
 }
+
 function mergeTwoArrays(left, right) {
     focusBars([...left, ...right]);
     let array = [];
-    let i = 0, j = 0, k = left[0].ind;
+    let i = 0,
+        j = 0,
+        k = left[0].ind;
     while (i < left.length && j < right.length) {
         if (left[i].val < right[j].val) {
-            array.push({ val: left[i].val, ind: k});
+            array.push({ val: left[i].val, ind: k });
             i++;
         } else {
-            array.push({ val: right[j].val, ind: k})
+            array.push({ val: right[j].val, ind: k })
             j++;
         }
         k++;
@@ -28,12 +31,12 @@ function mergeTwoArrays(left, right) {
     }
 
     while (i < left.length) {
-        array.push({ val: left[i].val, ind: k});
+        array.push({ val: left[i].val, ind: k });
         i++;
         k++;
     }
     while (j < right.length) {
-        array.push({ val: right[j].val, ind: k});
+        array.push({ val: right[j].val, ind: k });
         j++;
         k++;
     }

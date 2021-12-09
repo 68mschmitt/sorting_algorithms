@@ -41,12 +41,25 @@ function initializeBars() {
 }
 
 function get_random_array(size) {
-    let arr = [];
-    for (var i = 0; i < size; i++) {
-        const val = { val: Math.round(Math.random() * 250), ind: i};
-        if (!(val in arr)) arr.push(val);
+
+    let range = [];
+    for (let i = 0; i < size; i++) {
+        const val = { val: (i + 1) * 5, ind: i };
+        range.push(val);
     }
-    return arr;
+    let currentIndex = range.length,
+        randomIndex;
+
+    while (currentIndex != 0) {
+
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [range[currentIndex].val, range[randomIndex].val] = [
+            range[randomIndex].val, range[currentIndex].val
+        ];
+    }
+    return range;
 }
 
 function disableControls() {
@@ -60,7 +73,7 @@ function chooseSort() {
     sort(dropDown.value);
 }
 
-const sort = async (option) => {
+const sort = async(option) => {
     disableControls();
     switch (option) {
         case 'mergeSort':
@@ -99,7 +112,7 @@ const sort = async (option) => {
     await showGreenProgression();
 }
 
-const showGreenProgression = async () => {
+const showGreenProgression = async() => {
     for (let i = 0; i < array.length; i++) {
         let bar = document.querySelector('#ind' + array[i].ind);
         bar.style.background = 'red';
