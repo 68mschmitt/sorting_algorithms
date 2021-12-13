@@ -1,4 +1,4 @@
-const quickSort = async (arr, start, end) => {
+const quickSort = async(arr, start, end) => {
     if (start < end) {
         let pi = await partition(arr, start, end);
         await quickSort(arr, start, pi - 1);
@@ -6,7 +6,7 @@ const quickSort = async (arr, start, end) => {
     }
 }
 
-const partition = async (arr, start, end) => {
+const partition = async(arr, start, end) => {
     let pivot_index = start;
     let pivot = arr[pivot_index].val;
 
@@ -20,7 +20,7 @@ const partition = async (arr, start, end) => {
             comparisons++;
             start++;
         }
-        while (arr[end].val > pivot) { 
+        while (arr[end].val > pivot) {
             const chg = [arr[end], arr[pivot_index]];
             focusSelectionBars(chg, 'orange');
             await timeout(waitTime);

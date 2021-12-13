@@ -1,4 +1,4 @@
-const recursiveInsertionSort = async (arr, n) => {
+const recursiveInsertionSort = async(arr, n) => {
     if (n <= 1) return;
 
     await recursiveInsertionSort(arr, n - 1);
@@ -14,10 +14,10 @@ const recursiveInsertionSort = async (arr, n) => {
 
         arr[j + 1].val = arr[j].val;
 
-        reDrawBars(arr[j], arr[n - 1]);
         drawDoneBars(n - 1);
 
         j--;
     }
     arr[j + 1].val = prev;
+    drawDoneBars(array.length - 1);
 }

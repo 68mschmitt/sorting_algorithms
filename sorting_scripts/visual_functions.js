@@ -145,5 +145,6 @@ function drawDoneBars(currentIndex) {
     for (let i = 0; i <= currentIndex; i++) {
         let bar = document.querySelector('#ind' + array[i].ind);
         bar.style.background = 'white';
+        bar.style.height = array[i].val + 'px';
     }
 }
