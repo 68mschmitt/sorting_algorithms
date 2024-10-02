@@ -1,0 +1,5 @@
+services:
+  sorting:
+    build: .
+    ports:
+      - "9090:80"
